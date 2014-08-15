@@ -198,7 +198,7 @@ class WgetArgs(object):
         if item_type == 'verizon':
             wget_args.append('http://mysite.verizon.net/{0}/'.format(item_value))
         elif item_type == 'bellatlantic':
-            wget_args.append('htp://members.bellatlantic.net/{0}/'.format(item_value))
+            wget_args.append('http://members.bellatlantic.net/{0}/'.format(item_value))
         
         else:
             raise Exception('Unknown item')
