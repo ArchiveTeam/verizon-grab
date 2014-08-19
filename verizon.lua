@@ -68,34 +68,3 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
 
   return wget.actions.NOTHING
 end
-
-
-wget.callbacks.get_urls = function(file, url, is_css, iri)
-  local urls = {}
-  local html = read_file(file)
-
-  for url in string.gmatch(html, "url%(([%w/%%.:_-]+)%)") do
-
-    -- prevent segfault of missing full url
-    if url:sub(1, 4) ~= 'http' then
-      if url:sub(1, 1) ~= '/' then
-        url = '/' .. url
-      end
-
-      url = 'http://mysite.verizon.net' .. url
-    end
-
---    io.stdout:write("\n  Added " .. url .. ".\n")
---    io.stdout:flush()
-
-    table.insert(urls, { url=url })
-  end
-
-  for url in string.gmatch(html, "'(http[%w/%%.:_-]+)'") do
---    io.stdout:write("\n  Added " .. url .. ".\n")
---    io.stdout:flush()
-    table.insert(urls, { url=url })
-  end
-
-  return urls
-end
