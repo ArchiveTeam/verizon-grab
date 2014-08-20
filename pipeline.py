@@ -188,6 +188,7 @@ class WgetArgs(object):
         ]
         
         item_name = item['item_name']
+        assert ':' in item_name
         item_type, item_value = item_name.split(':', 1)
         
         item['item_type'] = item_type
