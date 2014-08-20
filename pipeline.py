@@ -183,7 +183,7 @@ class WgetArgs(object):
             "--domains", "mysite.verizon.net,members.bellatlantic.net",
             "--warc-file", ItemInterpolation("%(item_dir)s/%(warc_file_base)s"),
             "--warc-header", "operator: Archive Team",
-            "--warc-header", "verizon-archive-dld-script-version: " + VERSION,
+            "--warc-header", "verizon-dld-script-version: " + VERSION,
             "--warc-header", ItemInterpolation("verizon-user: %(item_name)s"),
         ]
         
