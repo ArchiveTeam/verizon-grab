@@ -1,5 +1,7 @@
 local url_count = 0
 local tries = 0
+local item_type = os.getenv('item_type')
+local item_value = os.getenv('item_value')
 
 
 read_file = function(file)
@@ -19,7 +21,25 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
   -- Skip redirect from mysite.verizon.net and members.bellatlantic.net
   if url == "http://entertainment.verizon.com/" then
     return false
-  
+  elseif string.match(url, "bellatlantic%.net/([^/]+)/") or
+    string.match(url, "verizon%.net/([^/]+)/") then
+    local directory_name_verizon = string.match(url, "verizon%.net/([^/]+)/")
+    directory_name_verizon = string.gsub(directory_name, '%%7E', '~')
+    local directory_name_bellatlantic = string.match(url, "bellatlantic%.net/([^/]+)/")
+    directory_name_bellatlantic = string.gsub(directory_name, '%%7E', '~')
+    if directory_name_verizon ~= item_value then
+    -- do not want someone else's homepage
+      -- io.stdout:write("\n Reject " .. url .. " " .. directory_name .. "\n")
+      -- io.stdout:flush()
+      return false
+    elseif directory_name_bellatlantic ~= item_value then
+    -- do not want someone else's homepage
+      -- io.stdout:write("\n Reject " .. url .. " " .. directory_name .. "\n")
+      -- io.stdout:flush()
+      return false
+    else
+      return verdict
+    end
   else
     return verdict
   end
