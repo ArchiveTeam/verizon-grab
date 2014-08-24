@@ -27,12 +27,8 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
     directory_name_verizon = string.gsub(directory_name_verizon, '%%7E', '~')
     local directory_name_bellatlantic = string.match(url, "bellatlantic%.net/([^/]+)/")
     directory_name_bellatlantic = string.gsub(directory_name_bellatlantic, '%%7E', '~')
-    if directory_name_verizon ~= item_value then
-    -- do not want someone else's homepage
-      -- io.stdout:write("\n Reject " .. url .. " " .. directory_name .. "\n")
-      -- io.stdout:flush()
-      return false
-    elseif directory_name_bellatlantic ~= item_value then
+    if directory_name_verizon ~= item_value and
+      directory_name_bellatlantic ~= item_value then
     -- do not want someone else's homepage
       -- io.stdout:write("\n Reject " .. url .. " " .. directory_name .. "\n")
       -- io.stdout:flush()
@@ -77,7 +73,8 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
   tries = 0
 
   -- We're okay; sleep a bit (if we have to) and continue
-  local sleep_time = 0.1 * (math.random(75, 1000) / 100.0)
+  -- local sleep_time = 0.1 * (math.random(75, 1000) / 100.0)
+  local sleep_time = 0
 
   --  if string.match(url["host"], "cdn") or string.match(url["host"], "media") then
   --    -- We should be able to go fast on images since that's what a web browser does
