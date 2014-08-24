@@ -23,18 +23,28 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
     return false
   elseif string.match(url, "bellatlantic%.net/([^/]+)/") or
     string.match(url, "verizon%.net/([^/]+)/") then
-    local directory_name_verizon = string.match(url, "verizon%.net/([^/]+)/")
-    directory_name_verizon = string.gsub(directory_name_verizon, '%%7E', '~')
-    local directory_name_bellatlantic = string.match(url, "bellatlantic%.net/([^/]+)/")
-    directory_name_bellatlantic = string.gsub(directory_name_bellatlantic, '%%7E', '~')
-    if directory_name_verizon ~= item_value and
-      directory_name_bellatlantic ~= item_value then
-    -- do not want someone else's homepage
-      -- io.stdout:write("\n Reject " .. url .. " " .. directory_name .. "\n")
-      -- io.stdout:flush()
-      return false
-    else
-      return verdict
+    if item_type == verizon then
+      local directory_name_verizon = string.match(url, "verizon%.net/([^/]+)/")
+      directory_name_verizon = string.gsub(directory_name_verizon, '%%7E', '~')
+      if directory_name_verizon ~= item_value then
+        -- do not want someone else's homepage
+        -- io.stdout:write("\n Reject " .. url .. " " .. directory_name .. "\n")
+        -- io.stdout:flush()
+        return false
+      else
+        return verdict
+      end
+    elseif item_type == bellatlantic then
+      local directory_name_bellatlantic = string.match(url, "bellatlantic%.net/([^/]+)/")
+      directory_name_bellatlantic = string.gsub(directory_name_bellatlantic, '%%7E', '~')
+      if directory_name_bellatlantic ~= item_value then
+        -- do not want someone else's homepage
+        -- io.stdout:write("\n Reject " .. url .. " " .. directory_name .. "\n")
+        -- io.stdout:flush()
+        return false
+      else
+        return verdict
+      end
     end
   else
     return verdict
