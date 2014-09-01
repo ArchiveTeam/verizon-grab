@@ -68,6 +68,10 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
     (status_code >= 400 and status_code ~= 404 and status_code ~= 403) then
     if string.match(url["host"], "verizon%.net") or
       string.match(url["host"], "bellatlantic%.net") then
+      if status_code == 423 then
+        return wget.actions.ABORT
+      end
+      
       io.stdout:write("\nServer returned "..http_stat.statcode..". Sleeping.\n")
       io.stdout:flush()
       
