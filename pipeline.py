@@ -56,7 +56,7 @@ if not WGET_LUA:
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = "20140901.02"
+VERSION = "20140901.03"
 USER_AGENT = 'ArchiveTeam'
 TRACKER_ID = 'verizon'
 TRACKER_HOST = 'tracker.archiveteam.org'
@@ -236,8 +236,7 @@ pipeline = Pipeline(
     PrepareDirectories(warc_prefix="verizon"),
     WgetDownload(
         WgetArgs(),
-        max_tries=10,
-#        max_tries=2,
+        max_tries=2,
         accept_on_exit_code=[0, 8],
         env={
             "item_dir": ItemValue("item_dir"),
