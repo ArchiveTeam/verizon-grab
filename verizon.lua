@@ -100,10 +100,8 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
     io.stdout:flush()
     
     return wget.actions.ABORT
-  else
-    return wget.actions.CONTINUE
   end
-    
+
   tries = 0
 
   -- We're okay; sleep a bit (if we have to) and continue
