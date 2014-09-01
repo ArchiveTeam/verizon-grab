@@ -17,34 +17,37 @@ end
 
 wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_parsed, iri, verdict, reason)
   local url = urlpos["url"]["url"]
-  
+
   -- Skip redirect from mysite.verizon.net and members.bellatlantic.net
   if url == "http://entertainment.verizon.com/" then
     return false
   elseif string.match(url, "bellatlantic%.net/([^/]+)/") or
     string.match(url, "verizon%.net/([^/]+)/") then
-    if item_type == verizon then
+    if item_type == "verizon" then
       local directory_name_verizon = string.match(url, "verizon%.net/([^/]+)/")
       directory_name_verizon = string.gsub(directory_name_verizon, '%%7E', '~')
       if directory_name_verizon ~= item_value then
         -- do not want someone else's homepage
-        -- io.stdout:write("\n Reject " .. url .. " " .. directory_name .. "\n")
+        -- io.stdout:write("\n Reject " .. url .. " " .. directory_name_verizon .. "\n")
         -- io.stdout:flush()
         return false
       else
         return verdict
       end
-    elseif item_type == bellatlantic then
+    elseif item_type == "bellatlantic" then
       local directory_name_bellatlantic = string.match(url, "bellatlantic%.net/([^/]+)/")
       directory_name_bellatlantic = string.gsub(directory_name_bellatlantic, '%%7E', '~')
       if directory_name_bellatlantic ~= item_value then
         -- do not want someone else's homepage
-        -- io.stdout:write("\n Reject " .. url .. " " .. directory_name .. "\n")
+        -- io.stdout:write("\n Reject " .. url .. " " .. directory_name_bellatlantic .. "\n")
         -- io.stdout:flush()
         return false
       else
         return verdict
       end
+    else
+      -- shouldn't reach here!
+      assert(false)
     end
   elseif string.match(url, "//////////") then
     return false
