@@ -56,6 +56,17 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
       else
         return verdict
       end
+    elseif item_type == "verizon36pack" then
+      local verizon36pack = string.match(url, "verizon%.net/([^/]+)/")
+      verizon36pack = string.gsub(verizon36pack, '%%7E', '~')
+      if verizon36pack ~= item_value then
+        -- do not want someone else's homepage
+        -- io.stdout:write("\n Reject " .. url .. " " .. verizon36pack .. "\n")
+        -- io.stdout:flush()
+        return false
+      else
+        return verdict
+      end
     else
       -- shouldn't reach here!
       assert(false)
