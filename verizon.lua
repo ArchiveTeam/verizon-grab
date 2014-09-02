@@ -45,6 +45,17 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
       else
         return verdict
       end
+    elseif item_type == "bellatlantic36pack" then
+      local directory_name_bellatlantic36pack = string.match(url, "bellatlantic%.net/([^/]+)/")
+      directory_name_bellatlantic36pack = string.gsub(directory_name_bellatlantic36pack, '%%7E', '~')
+      if directory_name_bellatlantic36pack ~= item_value then
+        -- do not want someone else's homepage
+        -- io.stdout:write("\n Reject " .. url .. " " .. directory_name_bellatlantic36pack .. "\n")
+        -- io.stdout:flush()
+        return false
+      else
+        return verdict
+      end
     else
       -- shouldn't reach here!
       assert(false)
