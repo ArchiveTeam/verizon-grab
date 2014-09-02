@@ -56,7 +56,7 @@ if not WGET_LUA:
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = "20140902.03"
+VERSION = "20140902.04"
 USER_AGENT = 'ArchiveTeam'
 TRACKER_ID = 'verizon'
 TRACKER_HOST = 'tracker.archiveteam.org'
@@ -194,7 +194,7 @@ class WgetArgs(object):
         item['item_type'] = item_type
         item['item_value'] = item_value
         
-        assert item_type in ('verizon', 'bellatlantic', 'bellatlantic36pack')
+        assert item_type in ('verizon', 'bellatlantic', 'bellatlantic36pack', 'verizon36pack')
         
         if item_type == 'verizon':
             wget_args.append('http://mysite.verizon.net/{0}/'.format(item_value))
@@ -237,6 +237,43 @@ class WgetArgs(object):
             wget_args.append('http://members.bellatlantic.net/{0}x/'.format(item_value))
             wget_args.append('http://members.bellatlantic.net/{0}y/'.format(item_value))
             wget_args.append('http://members.bellatlantic.net/{0}z/'.format(item_value))
+        elif item_type == 'verizon36pack':
+            wget_args.append('http://mysite.verizon.net/{0}0/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}1/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}2/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}3/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}4/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}5/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}6/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}7/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}8/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}9/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}a/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}b/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}c/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}d/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}e/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}f/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}g/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}h/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}i/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}j/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}k/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}l/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}m/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}n/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}o/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}p/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}q/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}r/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}s/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}t/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}u/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}v/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}w/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}x/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}y/'.format(item_value))
+            wget_args.append('http://mysite.verizon.net/{0}z/'.format(item_value))
         else:
             raise Exception('Unknown item')
         
