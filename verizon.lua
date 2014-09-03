@@ -48,7 +48,7 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
     elseif item_type == "bellatlantic36pack" then
       local directory_name_bellatlantic36pack = string.match(url, "bellatlantic%.net/([^/]+)/")
       directory_name_bellatlantic36pack = string.gsub(directory_name_bellatlantic36pack, '%%7E', '~')
-      if directory_name_bellatlantic36pack ~= item_value then
+      if not match.string(directory_name_bellatlantic36pack, item_value) then
         -- do not want someone else's homepage
         -- io.stdout:write("\n Reject " .. url .. " " .. directory_name_bellatlantic36pack .. "\n")
         -- io.stdout:flush()
@@ -59,7 +59,7 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
     elseif item_type == "verizon36pack" then
       local directory_name_verizon36pack = string.match(url, "verizon%.net/([^/]+)/")
       directory_name_verizon36pack = string.gsub(directory_name_verizon36pack, '%%7E', '~')
-      if directory_name_verizon36pack ~= item_value then
+      if not match.string(directory_name_verizon36pack, item_value) then
         -- do not want someone else's homepage
         -- io.stdout:write("\n Reject " .. url .. " " .. directory_name_verizon36pack .. "\n")
         -- io.stdout:flush()
