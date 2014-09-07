@@ -2,7 +2,7 @@ local url_count = 0
 local tries = 0
 local item_type = os.getenv('item_type')
 local item_value = os.getenv('item_value')
-
+dofile("failure_report.lua")
 
 read_file = function(file)
   if file then
@@ -13,6 +13,12 @@ read_file = function(file)
   else
     return ""
   end
+end
+
+local admit_failure = function(status_code, url)
+  io.stdout:write("Giving up on "..url.."\n")
+  io.stdout:flush()
+  log_failure(status_code, url, os.getenv('downloader'), item_type, item_value)
 end
 
 wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_parsed, iri, verdict, reason)
@@ -91,7 +97,8 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
     if string.match(url["host"], "verizon%.net") or
       string.match(url["host"], "bellatlantic%.net") then
       if status_code == 423 then
-        return wget.actions.ABORT
+        admit_failure(status_code, url.url)
+        return wget.actions.NOTHING
       end
       
       io.stdout:write("\nServer returned "..http_stat.statcode..". Sleeping.\n")
@@ -102,9 +109,8 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
       tries = tries + 1
       
       if tries >= 5 then
-        io.stdout:write("\nI give up...\n")
-        io.stdout:flush()
-        return wget.actions.ABORT
+        admit_failure(status_code, url.url)
+        return wget.actions.NOTHING
       else
         return wget.actions.CONTINUE
       end
@@ -132,9 +138,8 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
     tries = tries + 1
     
     if tries >= 5 then
-      io.stdout:write("\nI give up...\n")
-      io.stdout:flush()
-      return wget.actions.ABORT
+      admit_failure(status_code, url.url)
+      return wget.actions.NOTHING
     else
       return wget.actions.CONTINUE
     end
