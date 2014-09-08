@@ -27,6 +27,8 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
   -- Skip redirect from mysite.verizon.net and members.bellatlantic.net
   if url == "http://entertainment.verizon.com/" then
     return false
+  elseif url == ("http://verizon.net/" or "https://verizon.net/" or "http://www.verizon.net/" or "https://www.verizon.net/" or "http://bellatlantic.net/" or "https://bellatlantic.net/" or "http://www.bellatlantic.net/" or "https://www.bellatlantic.net/") then
+    return false
   elseif string.match(url, "bellatlantic%.net/([^/]+)/") or
     string.match(url, "verizon%.net/([^/]+)/") then
     if item_type == "verizon" then
