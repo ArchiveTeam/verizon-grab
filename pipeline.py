@@ -274,6 +274,11 @@ class WgetArgs(object):
             wget_args.append('http://mysite.verizon.net/{0}x/'.format(item_value))
             wget_args.append('http://mysite.verizon.net/{0}y/'.format(item_value))
             wget_args.append('http://mysite.verizon.net/{0}z/'.format(item_value))
+        elif item_type == 'verizon1296pack':
+            suffixes = string.digits + string.lowercase
+            
+            for args in [('http://twitpic.com/show/mini/{0}{1}{2}'.format(item_value, s, s)) for s in suffixes]:
+                wget_args.append(args[0])
         else:
             raise Exception('Unknown item')
         
