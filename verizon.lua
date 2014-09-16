@@ -75,6 +75,17 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
       else
         return verdict
       end
+    elseif item_type == "verizon1296pack" then
+      local directory_name_verizon1296pack = string.match(url, "verizon%.net/([^/]+)/")
+      directory_name_verizon1296pack = string.gsub(directory_name_verizon1296pack, '%%7E', '~')
+      if not string.match(directory_name_verizon1296pack, item_value) then
+        -- do not want someone else's homepage
+        -- io.stdout:write("\n Reject " .. url .. " " .. directory_name_verizon1296pack .. "\n")
+        -- io.stdout:flush()
+        return false
+      else
+        return verdict
+      end
     else
       -- shouldn't reach here!
       assert(false)
