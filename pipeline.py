@@ -194,7 +194,7 @@ class WgetArgs(object):
         item['item_type'] = item_type
         item['item_value'] = item_value
         
-        assert item_type in ('verizon', 'bellatlantic', 'bellatlantic36pack', 'verizon36pack')
+        assert item_type in ('verizon', 'bellatlantic', 'bellatlantic36pack', 'verizon36pack', 'verizon1296pack')
         
         if item_type == 'verizon':
             wget_args.append('http://mysite.verizon.net/{0}/'.format(item_value))
