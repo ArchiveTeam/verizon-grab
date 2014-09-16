@@ -29,6 +29,8 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
     return false
   elseif url == ("http://verizon.net/" or "https://verizon.net/" or "http://www.verizon.net/" or "https://www.verizon.net/" or "http://bellatlantic.net/" or "https://bellatlantic.net/" or "http://www.bellatlantic.net/" or "https://www.bellatlantic.net/") then
     return false
+  elseif string.match(url, "//////////") then
+    return false
   elseif string.match(url, "bellatlantic%.net/([^/]+)/") or
     string.match(url, "verizon%.net/([^/]+)/") then
     if item_type == "verizon" then
@@ -90,8 +92,6 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
       -- shouldn't reach here!
       assert(false)
     end
-  elseif string.match(url, "//////////") then
-    return false
   else
     return verdict
   end
