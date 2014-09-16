@@ -121,7 +121,7 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
       
       tries = tries + 1
       
-      if tries >= 5 then
+      if tries >= 15 then
         admit_failure(status_code, url.url)
         return wget.actions.NOTHING
       else
