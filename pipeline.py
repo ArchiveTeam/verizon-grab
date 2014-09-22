@@ -57,7 +57,7 @@ if not WGET_LUA:
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = "20140922.01"
+VERSION = "20140922.02"
 USER_AGENT = 'ArchiveTeam'
 TRACKER_ID = 'verizon'
 TRACKER_HOST = 'tracker.archiveteam.org'
@@ -195,7 +195,7 @@ class WgetArgs(object):
         item['item_type'] = item_type
         item['item_value'] = item_value
         
-        assert item_type in ('verizon', 'bellatlantic', 'bellatlantic36pack', 'verizon36pack', 'verizon1296pack')
+        assert item_type in ('verizon', 'bellatlantic', 'bellatlantic36pack', 'verizon36pack', 'verizon1296pack', 'bellatlantic1296pack')
         
         if item_type == 'verizon':
             wget_args.append('http://mysite.verizon.net/{0}/'.format(item_value))
