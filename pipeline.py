@@ -351,6 +351,82 @@ class WgetArgs(object):
                 wget_args.append(args[34])
                 wget_args.append(args[35])
             
+        elif item_type == 'bellatlantic1296pack':
+            suffixes = string.digits + string.lowercase
+
+            for args in [('http://members.bellatlantic.net/{0}0{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}1{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}2{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}3{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}4{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}5{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}6{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}7{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}8{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}9{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}a{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}b{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}c{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}d{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}e{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}f{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}g{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}h{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}i{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}j{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}k{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}l{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}m{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}n{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}o{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}p{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}q{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}r{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}s{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}t{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}u{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}v{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}w{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}x{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}y{1}/'.format(item_value, s), \
+                          'http://members.bellatlantic.net/{0}z{1}/'.format(item_value, s)) for s in suffixes]:
+                wget_args.append(args[0])
+                wget_args.append(args[1])
+                wget_args.append(args[2])
+                wget_args.append(args[3])
+                wget_args.append(args[4])
+                wget_args.append(args[5])
+                wget_args.append(args[6])
+                wget_args.append(args[7])
+                wget_args.append(args[8])
+                wget_args.append(args[9])
+                wget_args.append(args[10])
+                wget_args.append(args[11])
+                wget_args.append(args[12])
+                wget_args.append(args[13])
+                wget_args.append(args[14])
+                wget_args.append(args[15])
+                wget_args.append(args[16])
+                wget_args.append(args[17])
+                wget_args.append(args[18])
+                wget_args.append(args[19])
+                wget_args.append(args[20])
+                wget_args.append(args[21])
+                wget_args.append(args[22])
+                wget_args.append(args[23])
+                wget_args.append(args[24])
+                wget_args.append(args[25])
+                wget_args.append(args[26])
+                wget_args.append(args[27])
+                wget_args.append(args[28])
+                wget_args.append(args[29])
+                wget_args.append(args[30])
+                wget_args.append(args[31])
+                wget_args.append(args[32])
+                wget_args.append(args[33])
+                wget_args.append(args[34])
+                wget_args.append(args[35])
+            
         else:
             raise Exception('Unknown item')
         
