@@ -155,7 +155,7 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
       end
     end
   elseif status_code == 0 then
-    io.stdout:write("\nServer returned "..http_stat.statcode..". Sleeping.\n")
+    io.stdout:write("\nEncounted response code 0 (wget error: "..err..").  Sleeping.\n")
     io.stdout:flush()
     
     os.execute("sleep 1")
