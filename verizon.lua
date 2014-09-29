@@ -89,7 +89,7 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
         return verdict
       end
     elseif item_type == "bellatlantic1296pack" then
-      local directory_name_bellatlantic1296pack = string.match(url, "verizon%.net/([^/]+)/")
+      local directory_name_bellatlantic1296pack = string.match(url, "bellatlantic%.net/([^/]+)/")
       directory_name_bellatlantic1296pack = string.gsub(directory_name_bellatlantic1296pack, '%%7E', '~')
       if not string.match(directory_name_bellatlantic1296pack, item_value) then
         -- do not want someone else's homepage
